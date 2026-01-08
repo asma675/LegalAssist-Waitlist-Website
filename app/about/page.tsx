@@ -14,7 +14,7 @@ export default function AboutPage() {
       <div className="space-y-6 text-sm text-slate-700">
         <div>
           <p className="leading-relaxed">
-            Hi, I’m <span className="font-semibold text-slate-900">Asma Ahmed</span> — a Canadian citizen based in Toronto and
+            Hi, I’m <span className="font-semibold text-slate-900">Asma Ahmed</span> — a Canadian based in Toronto and
             an Honours Bachelor of Computer Science (Cloud Computing) student at Sheridan College.
           </p>
           <p className="mt-3 leading-relaxed">
@@ -42,6 +42,8 @@ export default function AboutPage() {
             <li>• Founder & Lead Software Developer — LegalAssist (Jan 2026 – Present)</li>
             <li>• IBM Z Student Ambassador (Dec 2025 – Present)</li>
             <li>• Hackathon Team Lead & Software Engineer (Sept 2025 – Present)</li>
+            <li>• UNSA Founder and President - Sheridan College (Nov 2025 – Present)</li>
+
           </ul>
         </div>
 
