@@ -15,7 +15,7 @@ export default function AboutPage() {
         <div>
           <p className="leading-relaxed">
             Hi, I’m <span className="font-semibold text-slate-900">Asma Ahmed</span> — a Canadian based in Toronto and
-            an Honours Bachelor of Computer Science (Cloud Computing) student at Sheridan College.
+            an Honours Bachelor of Computer Science (Cloud Computing) 3rd year student at Sheridan College.
           </p>
           <p className="mt-3 leading-relaxed">
             <span className="font-semibold text-slate-900">Why LegalAssist?</span> I’ve always been fascinated by how legal work
