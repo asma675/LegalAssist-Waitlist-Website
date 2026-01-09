@@ -1,12 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
-
 import JoinToast from "./components/JoinToast";
-import PricingSection from "./components/PricingSection";
 import WaitlistModal from "./components/WaitlistModal";
+import Footer from "./components/Footer";
 
 const WAITLIST_FORM_URL = "https://forms.gle/tCmgmxyvCxLms7Nb7";
-const YOUTUBE_URL = "https://youtu.be/HTjIDlD48Qo";
 const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/HTjIDlD48Qo";
 
 const screens = [
@@ -23,15 +20,15 @@ export default function Page() {
   return (
     <main className="min-h-screen">
       <JoinToast />
-      <WaitlistModal waitlistUrl={WAITLIST_FORM_URL} />
+      <WaitlistModal />
 
       <div className="mx-auto flex max-w-7xl gap-6 px-4 py-6 md:px-6 md:py-8">
         {/* Sidebar */}
         <aside className="hidden w-[270px] shrink-0 md:block">
           <div className="sticky top-6 space-y-4">
-            <div className="rounded-3xl bg-slate-950/95 p-5 text-white shadow-soft ring-1 ring-white/10">
+            <div className="rounded-3xl bg-slate-950/95 p-5 text-white shadow-soft">
               <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-ink-500 to-ink-700 shadow-glow">
+                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-ink-500 to-ink-700">
                   <span className="text-lg">⚖️</span>
                 </div>
                 <div>
@@ -64,13 +61,11 @@ export default function Page() {
                 </a>
               </nav>
 
-              <div className="mt-5 rounded-2xl bg-gradient-to-br from-ink-600/60 to-ink-900/40 p-4 ring-1 ring-white/10">
+              <div className="mt-5 rounded-2xl bg-gradient-to-br from-ink-600/60 to-ink-900/40 p-4">
                 <div className="text-sm font-semibold">Go Premium</div>
-                <div className="mt-1 text-xs text-white/75">Unlimited documents &amp; priority support</div>
+                <div className="mt-1 text-xs text-white/75">Unlimited documents & priority support</div>
                 <a
-                  href={WAITLIST_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#waitlist"
                   className="mt-3 inline-flex w-full items-center justify-center rounded-xl bg-white px-3 py-2 text-sm font-semibold text-slate-950 hover:opacity-95"
                 >
                   Get Early Access
@@ -78,26 +73,7 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/40 bg-white/70 p-4 shadow-soft backdrop-blur">
-              <div className="text-sm font-semibold text-slate-900">Built by Asma Ahmed</div>
-              <div className="mt-1 text-xs text-slate-600">
-                LegalAssist does not provide legal advice and does not create an attorney-client relationship.
-              </div>
-              <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                <Link className="rounded-xl bg-white/70 px-3 py-2 text-slate-800 hover:bg-white" href="/about">
-                  About
-                </Link>
-                <Link className="rounded-xl bg-white/70 px-3 py-2 text-slate-800 hover:bg-white" href="/contact">
-                  Contact
-                </Link>
-                <Link className="rounded-xl bg-white/70 px-3 py-2 text-slate-800 hover:bg-white" href="/privacy">
-                  Privacy
-                </Link>
-                <Link className="rounded-xl bg-white/70 px-3 py-2 text-slate-800 hover:bg-white" href="/terms">
-                  Terms
-                </Link>
-              </div>
-            </div>
+            {/* ✅ Removed the "Built by Asma Ahmed" card from sidebar (now in Footer) */}
           </div>
         </aside>
 
@@ -105,8 +81,8 @@ export default function Page() {
         <div className="flex-1 space-y-6">
           {/* Top bar */}
           <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3 md:hidden">
-              <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-ink-500 to-ink-700 text-white shadow-glow">
+            <div className="md:hidden flex items-center gap-3">
+              <div className="grid h-10 w-10 place-items-center rounded-2xl bg-gradient-to-br from-ink-500 to-ink-700 text-white">
                 ⚖️
               </div>
               <div>
@@ -117,9 +93,7 @@ export default function Page() {
 
             <div className="ml-auto flex items-center gap-3">
               <a
-                href={WAITLIST_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#waitlist"
                 className="rounded-xl bg-gradient-to-r from-ink-600 to-ink-800 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:opacity-95"
               >
                 Join Waitlist
@@ -136,37 +110,29 @@ export default function Page() {
 
           {/* Hero */}
           <section id="overview" className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
-            <div className="relative overflow-hidden rounded-[26px] bg-gradient-to-br from-slate-950 via-ink-900 to-ink-700 p-7 text-white ring-1 ring-white/10 md:p-10">
-              <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-ink-500/30 blur-3xl" />
-              <div className="absolute -bottom-20 -left-16 h-72 w-72 rounded-full bg-indigo-400/20 blur-3xl" />
-
-              <div className="relative flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white/10 shadow-glow">⚖️</div>
+            <div className="rounded-[26px] bg-gradient-to-br from-slate-950 via-ink-900 to-ink-700 p-7 text-white md:p-10">
+              <div className="flex items-center gap-3">
+                <div className="grid h-11 w-11 place-items-center rounded-2xl bg-white/10">⚖️</div>
                 <div>
                   <div className="text-lg font-semibold leading-tight">LegalAssist</div>
                   <div className="text-xs text-white/70">AI Legal Platform</div>
                 </div>
               </div>
 
-              <div className="relative mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80 ring-1 ring-white/10">
-                ✨ AI‑Powered Legal Platform
+              <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
+                ✨ AI-Powered Legal Platform
               </div>
 
-              <h1 className="relative mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
+              <h1 className="mt-4 text-3xl font-semibold tracking-tight md:text-4xl">
                 Your intelligent legal assistant — built like a real firm system.
               </h1>
-              <p className="relative mt-3 max-w-2xl text-sm text-white/80 md:text-base">
+              <p className="mt-3 max-w-2xl text-sm text-white/80 md:text-base">
                 Manage clients, cases, tasks, documents, and AI workflows in one place. Generate legal documents,
                 analyze uploaded files, and get structured case strategy outputs — faster and more organized.
               </p>
 
-              <div className="relative mt-6 flex flex-wrap gap-3">
-                <a
-                  href={WAITLIST_FORM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:opacity-95"
-                >
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a href="#waitlist" className="rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 hover:opacity-95">
                   Get Early Access
                 </a>
                 <a href="#demo" className="rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white hover:bg-white/15">
@@ -182,10 +148,7 @@ export default function Page() {
                 { k: "Docs", v: "Generate + store" },
                 { k: "AI", v: "Analyze + strategy" },
               ].map((c) => (
-                <div
-                  key={c.k}
-                  className="group rounded-2xl border border-white/60 bg-white/60 p-4 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-glow"
-                >
+                <div key={c.k} className="rounded-2xl border border-white/60 bg-white/60 p-4 backdrop-blur">
                   <div className="text-xs text-slate-600">{c.k}</div>
                   <div className="mt-1 text-sm font-semibold text-slate-900">{c.v}</div>
                 </div>
@@ -202,35 +165,14 @@ export default function Page() {
 
             <div className="mt-6 grid gap-4 md:grid-cols-3">
               {[
-                {
-                  title: "Client & Case Management",
-                  desc: "CRM-style clients and matters with clean navigation — just like your UI.",
-                },
-                {
-                  title: "Document Generator",
-                  desc: "Generate contracts, NDAs, agreements, letters, memos, briefs, motions, and more.",
-                },
-                {
-                  title: "Document Analyzer (Beta)",
-                  desc: "Upload PDFs/images and extract key clauses + insights to speed up review.",
-                },
-                {
-                  title: "AI Case Strategy",
-                  desc: "Strengths/weaknesses + strategic recommendations in a professional format.",
-                },
-                {
-                  title: "Tasks & Calendar",
-                  desc: "Organize work with tasks and scheduling (great for matter deadlines).",
-                },
-                {
-                  title: "Professional Disclaimers",
-                  desc: "Clear boundaries: informational only, attorney review required.",
-                },
+                { title: "Client & Case Management", desc: "CRM-style clients and matters with clean navigation — just like your UI." },
+                { title: "Document Generator", desc: "Generate contracts, NDAs, agreements, letters, memos, briefs, motions, and more." },
+                { title: "Document Analyzer (Beta)", desc: "Upload PDFs/images and extract key clauses + insights to speed up review." },
+                { title: "AI Case Strategy", desc: "Strengths/weaknesses + strategic recommendations in a professional format." },
+                { title: "Tasks & Calendar", desc: "Organize work with tasks and scheduling (great for matter deadlines)." },
+                { title: "Professional Disclaimers", desc: "Clear boundaries: informational only, attorney review required." },
               ].map((f) => (
-                <div
-                  key={f.title}
-                  className="rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/80 hover:shadow-glow"
-                >
+                <div key={f.title} className="rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur">
                   <div className="text-sm font-semibold text-slate-900">{f.title}</div>
                   <div className="mt-2 text-sm text-slate-600">{f.desc}</div>
                 </div>
@@ -238,17 +180,18 @@ export default function Page() {
             </div>
 
             <div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs text-amber-900">
-              Disclaimer: LegalAssist does not provide legal advice and does not create an attorney-client relationship.
-              AI outputs are informational and must be reviewed by a qualified attorney.
+              Disclaimer: LegalAssist does not provide legal advice and does not create an attorney-client relationship. AI outputs are informational and must be reviewed by a qualified attorney.
             </div>
           </section>
 
           {/* Demo Video */}
           <section id="demo" className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Demo video</h2>
-            <p className="mt-2 text-sm text-slate-600">Full walkthrough: dashboard → document analysis → research → case strategy.</p>
+            <p className="mt-2 text-sm text-slate-600">
+              Full walkthrough: dashboard → document analysis → research → case strategy.
+            </p>
 
-            <div className="mt-5 overflow-hidden rounded-3xl border border-white/60 bg-white/60 shadow-soft">
+            <div className="mt-5 overflow-hidden rounded-3xl border border-white/60 bg-white/60">
               <div className="aspect-video w-full">
                 <iframe
                   className="h-full w-full"
@@ -260,11 +203,11 @@ export default function Page() {
               </div>
             </div>
 
-            <div className="mt-4 text-sm text-slate-600">
+            <div className="mt-3 text-sm text-slate-600">
               Prefer opening in YouTube?{" "}
               <a
-                className="font-semibold text-ink-700 underline decoration-ink-300 underline-offset-4 hover:text-ink-900"
-                href={YOUTUBE_URL}
+                className="font-semibold text-ink-700 hover:underline"
+                href="https://youtu.be/HTjIDlD48Qo"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -282,22 +225,152 @@ export default function Page() {
 
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {screens.map((s) => (
-                <div key={s.src} className="group overflow-hidden rounded-3xl border border-white/60 bg-white/60 shadow-soft">
+                <div key={s.src} className="overflow-hidden rounded-3xl border border-white/60 bg-white/60">
                   <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src={s.src}
-                      alt={s.title}
-                      fill
-                      className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                    />
+                    <Image src={s.src} alt={s.title} fill className="object-cover" />
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Pricing */}
-          <PricingSection waitlistUrl={WAITLIST_FORM_URL} />
+          {/* ✅ NEW PRICING */}
+          <section
+            id="pricing"
+            className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8"
+          >
+            <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Simple, Transparent Pricing</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Choose the plan that fits your practice. All plans include a 14-day free trial.
+            </p>
+
+            {/* Toggle (visual only) */}
+            <div className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-white/60 bg-white/60 p-1 backdrop-blur">
+              <button
+                type="button"
+                className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-soft"
+              >
+                Monthly
+              </button>
+              <button
+                type="button"
+                className="rounded-xl px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white/60"
+                title="Pricing shown below reflects annual billing"
+              >
+                Annual{" "}
+                <span className="ml-1 rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-semibold text-emerald-700">
+                  Save 20%
+                </span>
+              </button>
+            </div>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {/* Starter */}
+              <div className="rounded-3xl border border-white/60 bg-white/60 p-6 backdrop-blur">
+                <div className="text-sm font-semibold text-slate-900">Starter</div>
+                <div className="mt-1 text-xs text-slate-600">Perfect for solo practitioners</div>
+
+                <div className="mt-5 flex items-end gap-2">
+                  <div className="text-4xl font-semibold text-slate-900">$39</div>
+                  <div className="pb-1 text-sm font-semibold text-slate-600">/month</div>
+                </div>
+                <div className="mt-1 text-xs text-slate-600">Billed $468/year</div>
+
+                <a
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-ink-200 bg-white/80 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
+                >
+                  Start Free Trial
+                </a>
+
+                <ul className="mt-6 space-y-2 text-sm text-slate-700">
+                  <li>• 50 document generations/month</li>
+                  <li>• 20 document analyses/month</li>
+                  <li>• Unlimited case analyses</li>
+                  <li>• Basic legal research</li>
+                  <li>• Email support</li>
+                  <li>• HTML export</li>
+                </ul>
+              </div>
+
+              {/* Professional */}
+              <div className="relative overflow-hidden rounded-3xl border border-ink-200 bg-white/80 p-6 shadow-soft backdrop-blur">
+                <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-ink-500/20 blur-2xl" />
+                <div className="inline-flex items-center gap-2 rounded-full bg-ink-600/10 px-3 py-1 text-xs font-semibold text-ink-800">
+                  Most Popular
+                </div>
+
+                <div className="mt-3 text-sm font-semibold text-slate-900">Professional</div>
+                <div className="mt-1 text-xs text-slate-600">Best for small law firms</div>
+
+                <div className="mt-5 flex items-end gap-2">
+                  <div className="text-4xl font-semibold text-slate-900">$119</div>
+                  <div className="pb-1 text-sm font-semibold text-slate-600">/month</div>
+                </div>
+                <div className="mt-1 text-xs text-slate-600">Billed $1428/year</div>
+
+                <a
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-ink-600 to-ink-800 px-4 py-3 text-sm font-semibold text-white shadow-soft hover:opacity-95"
+                >
+                  Start Free Trial
+                </a>
+
+                <ul className="mt-6 space-y-2 text-sm text-slate-700">
+                  <li>• 100 document generations/month</li>
+                  <li>• 50 document analyses/month</li>
+                  <li>• Unlimited case analyses</li>
+                  <li>• Advanced legal research</li>
+                  <li>• Priority support</li>
+                  <li>• PDF &amp; DOCX export</li>
+                  <li>• Custom templates</li>
+                  <li>• Team collaboration (3 users)</li>
+                </ul>
+              </div>
+
+              {/* Enterprise */}
+              <div className="rounded-3xl border border-white/60 bg-white/60 p-6 backdrop-blur">
+                <div className="text-sm font-semibold text-slate-900">Enterprise</div>
+                <div className="mt-1 text-xs text-slate-600">For large firms &amp; legal departments</div>
+
+                <div className="mt-5 flex items-end gap-2">
+                  <div className="text-4xl font-semibold text-slate-900">$399</div>
+                  <div className="pb-1 text-sm font-semibold text-slate-600">/month</div>
+                </div>
+                <div className="mt-1 text-xs text-slate-600">Billed $4788/year</div>
+
+                <a
+                  href={WAITLIST_FORM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center rounded-2xl border border-ink-200 bg-white/80 px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
+                >
+                  Contact Sales
+                </a>
+
+                <ul className="mt-6 space-y-2 text-sm text-slate-700">
+                  <li>• Unlimited document generations</li>
+                  <li>• Unlimited document analyses</li>
+                  <li>• Unlimited case analyses</li>
+                  <li>• Priority AI processing</li>
+                  <li>• Dedicated support manager</li>
+                  <li>• All export formats</li>
+                  <li>• Custom integrations</li>
+                  <li>• Unlimited team members</li>
+                  <li>• SSO &amp; advanced security</li>
+                  <li>• Custom AI training</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-6 text-xs text-slate-500">
+              * Pricing shown reflects annual billing (14-day free trial included). Waitlist members get early access and launch offers.
+            </div>
+          </section>
 
           {/* FAQ */}
           <section id="faq" className="rounded-[28px] border border-white/50 bg-white/70 p-6 shadow-soft backdrop-blur md:p-8">
@@ -320,19 +393,18 @@ export default function Page() {
                 },
                 {
                   q: "How do you handle data privacy?",
-                  a: "During early access, we minimize stored data and use secure infrastructure. For production, we plan clear data controls, retention policies, and firm-level settings.",
+                  a: "During beta, we minimize stored data and use secure infrastructure. For production, we plan clear data controls, retention policies, and firm-level settings.",
                 },
                 {
                   q: "When will invites go out?",
-                  a: "Invites roll out in batches. Join the waitlist and we’ll email you when early access opens.",
+                  a: "Invites roll out in batches. Join the waitlist and we’ll email you when early access opens for your segment.",
                 },
               ].map((item) => (
-                <details
-                  key={item.q}
-                  className="group rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur transition hover:bg-white/80 hover:shadow-glow"
-                >
+                <details key={item.q} className="group rounded-3xl border border-white/60 bg-white/60 p-5 backdrop-blur">
                   <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900">
-                    <span className="mr-2 inline-block rounded-lg bg-ink-600/10 px-2 py-1 text-xs font-semibold text-ink-800">Q</span>
+                    <span className="mr-2 inline-block rounded-lg bg-ink-600/10 px-2 py-1 text-xs font-semibold text-ink-800">
+                      Q
+                    </span>
                     {item.q}
                     <span className="float-right text-slate-400 transition-transform group-open:rotate-180">⌄</span>
                   </summary>
@@ -360,27 +432,12 @@ export default function Page() {
               </a>
               <div className="text-xs text-slate-500">No spam — just early access updates.</div>
             </div>
-
-            <div className="mt-6 rounded-2xl border border-white/60 bg-white/60 px-4 py-3 text-xs text-slate-600">
-              Legal Disclaimer: LegalAssist does not provide legal advice and does not create an attorney-client relationship.
-              All AI-generated content is for informational purposes only and must be reviewed by a qualified attorney.
-              <span className="text-slate-500"> © 2026 LegalAssist • Built by Asma Ahmed</span>
-              <span className="mx-2 text-slate-400">•</span>
-              <Link className="text-ink-700 underline decoration-ink-300 underline-offset-4 hover:text-ink-900" href="/privacy">
-                Privacy
-              </Link>
-              <span className="mx-2 text-slate-400">•</span>
-              <Link className="text-ink-700 underline decoration-ink-300 underline-offset-4 hover:text-ink-900" href="/terms">
-                Terms
-              </Link>
-              <span className="mx-2 text-slate-400">•</span>
-              <Link className="text-ink-700 underline decoration-ink-300 underline-offset-4 hover:text-ink-900" href="/contact">
-                Contact
-              </Link>
-            </div>
           </section>
         </div>
       </div>
+
+      {/* ✅ Footer lives outside the max-width container */}
+      <Footer />
     </main>
   );
 }
